@@ -13,6 +13,12 @@ public class ChatBot {
         System.out.println("Enter remainders of dividing your age by 7");
         int remainder_of_division_by_7 = scanner.nextInt();
         int your_age = ((remainder_of_division_by_3 * 70 + remainder_of_division_by_5 * 21 + remainder_of_division_by_7 * 15) % 105);
-        System.out.println("Your age is " + your_age + "; that's a good time to start programming!");
+        System.out.println("Your age is " + your_age + "; that's a good time to start programming!\nNow a will prove to you that I can count to any number you want");
+        int amount = scanner.nextInt();
+        int i = 0;
+        while (i < amount) {
+            i ++;
+            System.out.println(i + " !");
+        }
     }
 }
