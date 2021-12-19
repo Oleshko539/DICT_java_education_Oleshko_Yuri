@@ -23,23 +23,31 @@ public class hangman {
             if (attempt > 0) {
                 System.out.print(secret + "\nInput a letter: ");
                 String letter = scanner.nextLine();
-                someLetters.add(letter);
-                attempt--;
                 if (random_word.contains(letter)) {
+                    if (someLetters.contains(letter)) {
+                    System.out.println("No improvements");
+                    attempt--;
+                }
+                else {
                     for (int i = 0; i < random_word.length(); i++) {
                         if (symbol[i] == letter.charAt(0)) {
                             secret.setCharAt(i, letter.charAt(0));
                         }
                     }
+                }
                     if (secret.toString().equals(random_word)) {
-                        System.out.println(random_word+"\nThanks for playing!\n" +
+                        System.out.println(random_word + "\nThanks for playing!\n" +
                                 "Well see how well you did in the next stage");
                         break;
                     }
-                } else {
-                    System.out.println("That letter doesn`t appear in the word.");
                 }
-            } else {
+                else {
+                    System.out.println("That letter doesn`t appear in the word.");
+                    attempt--;
+                }
+                someLetters.add(letter);
+            }
+            else {
                 System.out.println("You Lost!");
                 break;
             }
