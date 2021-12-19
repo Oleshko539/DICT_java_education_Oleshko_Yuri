@@ -10,12 +10,17 @@ public class hangman {
                 "The game will be available soon");
         String[] words = {"java","python", "javascript", "kotlin"};
         String random_word = words[random.nextInt(words.length)];
-        System.out.println("Enter word: ");
-        String WORD = in.nextLine();
-        if (WORD.equals(random_word)){
+        char[] symbol = random_word.toCharArray();
+        for (int i = 2; i < symbol.length; i++) {
+            symbol[i] = '-';
+        }
+        String secret = String.valueOf(symbol);
+        System.out.print("Guess the word: " + secret + ": ");
+        String hidden_word = in.nextLine();
+        if (random_word.equals(hidden_word)){
             System.out.println("You survived! ");
         }
-        else if (!"WORD". equals(random_word)){
+        else if (!"random_word". equals(hidden_word)){
             System.out.println("You lost! ");
         }
     }
