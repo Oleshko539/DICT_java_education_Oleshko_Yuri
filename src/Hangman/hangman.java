@@ -23,9 +23,15 @@ public class hangman {
             if (attempt > 0) {
                 System.out.print(secret + "\nInput a letter: ");
                 String letter = scanner.nextLine();
+                if (letter.length()>1){
+                    System.out.println("You should input a single letter.");
+                }
+                if (!letter.matches("[a-z]")){
+                    System.out.println("Please enter a lowercase English letter.");
+                }
                 if (random_word.contains(letter)) {
                     if (someLetters.contains(letter)) {
-                    System.out.println("No improvements");
+                    System.out.println("Your already guessed this letter.");
                     attempt--;
                 }
                 else {
