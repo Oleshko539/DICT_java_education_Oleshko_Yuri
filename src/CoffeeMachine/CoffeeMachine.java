@@ -8,36 +8,51 @@ public class CoffeeMachine {
         int  w = 400, m = 540, c_b = 120, cup = 9, money =550, type;
         String ACTION;
         while(true){
-            System.out.println("The coffee machine has: \n" +
-                    w+" ml of water\n" +
-                    m+" ml of milk\n" +
-                    c_b+" gram of coffee beans\n" +
-                    cup+" of disposable cups\n" +
-                    money+" of money");
-            System.out.println("Write action (buy, fill, take): ");
+            System.out.println("Write action (buy, fill, take, remaining, exit): ");
             ACTION = scanner.nextLine();
-            if (ACTION.equals("buy")){
-                System.out.println("Choose your coffee: (1 - Espresso, 2 - Latte, 3 - Cappuccino) ");
-                type = scanner.nextInt();
-                if (type == 1) {
-                    w -= 250;
-                    c_b -= 16;
-                    cup --;
-                    money += 4;
-                }
-                else if (type == 2) {
-                    w -= 350;
-                    m -= 75;
-                    c_b -= 20;
-                    cup --;
-                    money += 7;
-                }
-                else if (type == 3) {
-                    w -= 200;
-                    m -= 100;
-                    c_b -= 12;
-                    cup --;
-                    money += 6;
+            if (ACTION.equals("buy")) {
+                while (true) {
+                    System.out.println("Choose your coffee: (1 - Espresso, 2 - Latte, 3 - Cappuccino, 0 - to main menu) ");
+                    type = scanner.nextInt();
+                    if (type == 1) {
+                        if (w < 250 || c_b < 16 || cup < 1) {
+                            System.out.println("Sorry, not enough ingredients!");
+                        }
+                        else {
+                            w -= 250;
+                            c_b -= 16;
+                            cup--;
+                            money += 4;
+                            System.out.println("I have enough resources, making you a coffee!");
+                        }
+                    }
+                    if (type == 2) {
+                        if (w < 350 || m < 75 || c_b < 20 || cup < 1) {
+                            System.out.println("Sorry, not enough ingredients!");
+                        } else {
+                            w -= 350;
+                            m -= 75;
+                            c_b -= 20;
+                            cup--;
+                            money += 7;
+                            System.out.println("I have enough resources, making you a coffee!");
+                        }
+                    }
+                    if (type == 3) {
+                        if (w < 200 || m < 100 || c_b < 12 || cup < 1) {
+                            System.out.println("Sorry, not enough ingredients!");
+                        } else {
+                            w -= 200;
+                            m -= 100;
+                            c_b -= 12;
+                            cup--;
+                            money += 6;
+                            System.out.println("I have enough resources, making you a coffee!");
+                        }
+                    }
+                    if (type == 0){
+                        break;
+                    }
                 }
             }
             if (ACTION.equals("fill")){
@@ -53,6 +68,16 @@ public class CoffeeMachine {
             if (ACTION.equals("take")){
                 System.out.println("I gave you "+money);
                 money = 0;
+            }
+            if (ACTION.equals("remaining")){
+                System.out.println("\nThe coffee machine has:\n" +
+                        w + " ml of water\n" +
+                        m +" ml of milk\n" +
+                        c_b + " gram of coffee beans\n" +
+                        cup + " of disposable cups\n" +
+                        money + " of money");
+            } if (ACTION.equals("exit")) {
+                System.exit(0);
             }
         }
     }
